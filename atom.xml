@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://freemanhsu.github.io/"/>
-  <updated>2015-02-04T16:07:36.335Z</updated>
+  <updated>2015-02-04T16:15:56.649Z</updated>
   <id>http://freemanhsu.github.io/</id>
   
   <author>
@@ -16,8 +16,8 @@
   
   <entry>
     <title><![CDATA[Hello Hexo]]></title>
-    <link href="http://freemanhsu.github.io/2015/02/04/Hello-Hexo/"/>
-    <id>http://freemanhsu.github.io/2015/02/04/Hello-Hexo/</id>
+    <link href="http://freemanhsu.github.io/Hello-Hexo/"/>
+    <id>http://freemanhsu.github.io/Hello-Hexo/</id>
     <published>2015-02-04T15:50:31.000Z</published>
     <updated>2015-02-04T16:07:18.000Z</updated>
     <content type="html"><![CDATA[<p>After going through blog systems as wordpress, jekyll, farbox, etc. Downloading, configuring, deploying, writing one episode or two and turn to another one…</p>
@@ -33,8 +33,8 @@
   
   <entry>
     <title><![CDATA[Hello World]]></title>
-    <link href="http://freemanhsu.github.io/2015/02/04/hello-world/"/>
-    <id>http://freemanhsu.github.io/2015/02/04/hello-world/</id>
+    <link href="http://freemanhsu.github.io/hello-world/"/>
+    <id>http://freemanhsu.github.io/hello-world/</id>
     <published>2015-02-04T15:04:39.000Z</published>
     <updated>2015-02-04T15:04:39.000Z</updated>
     <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
