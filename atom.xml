@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://freemanhsu.github.io/"/>
-  <updated>2015-02-04T16:15:56.649Z</updated>
+  <updated>2015-02-19T16:13:02.217Z</updated>
   <id>http://freemanhsu.github.io/</id>
   
   <author>
@@ -13,6 +13,68 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Start a Rails Project]]></title>
+    <link href="http://freemanhsu.github.io/Start-a-Rails-Project/"/>
+    <id>http://freemanhsu.github.io/Start-a-Rails-Project/</id>
+    <published>2015-02-19T15:25:48.000Z</published>
+    <updated>2015-02-19T16:11:49.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="Step_by_Step">Step by Step</h2>
+<h3 id="Step_1">Step 1</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir &lt;project name&gt;   </div><div class="line"><span class="built_in">cd</span> &lt;project name&gt;</div><div class="line">vagrant init ubuntu/trusty64</div><div class="line">vagrant up</div></pre></td></tr></table></figure>
+
+<h3 id="Step_2">Step 2</h3>
+<p>Change the memory size, which is necessary for developing.<br>We also give the virtual machine a fixed IP address for convenience.<br>Modify Vagrantfile with your favourite editor, adding the following lines.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">config.vm.provider <span class="string">"virtualbox"</span> <span class="keyword">do</span> |v|</div><div class="line">  v.memory = <span class="number">2048</span></div><div class="line">end</div><div class="line">config.vm.network :private_network, ip: <span class="string">"192.168.33.33"</span></div></pre></td></tr></table></figure>
+
+<p>and then  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vagrant reload</div></pre></td></tr></table></figure>
+
+<p>More for IP address,</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sudo</span> vim /etc/hosts</div></pre></td></tr></table></figure>
+
+<p>and add</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">192.168</span>.<span class="number">33.33</span> &lt;project name&gt;.dev</div></pre></td></tr></table></figure>
+
+<h3 id="Step_3">Step 3</h3>
+<p>Time for installing rails.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vagrant ssh</div></pre></td></tr></table></figure>
+
+<p>and type in following lines one by one</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sudo</span> apt-get update</div><div class="line"><span class="built_in">sudo</span> apt-get install -y git-core curl zlib1g-dev build-essential \</div><div class="line">                     libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 \</div><div class="line">                     libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common</div></pre></td></tr></table></figure>
+
+<p>Install rbenv, which is a tool for installing ruby and version control of ruby.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> </div><div class="line">git clone git://github.com/sstephenson/rbenv.git .rbenv</div><div class="line"><span class="built_in">echo</span> <span class="string">'export PATH="$HOME/.rbenv/bin:$PATH"'</span> &gt;&gt; ~/.bashrc</div><div class="line"><span class="built_in">echo</span> <span class="string">'eval "$(rbenv init -)"'</span> &gt;&gt; ~/.bashrc</div><div class="line">git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build</div><div class="line"><span class="built_in">echo</span> <span class="string">'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"'</span> &gt;&gt; ~/.bashrc</div><div class="line"><span class="keyword">exec</span> <span class="variable">$SHELL</span></div></pre></td></tr></table></figure>
+
+<p>Now is ruby</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rbenv install <span class="number">2.1</span>.<span class="number">2</span></div><div class="line">rbenv global <span class="number">2.1</span>.<span class="number">2</span></div></pre></td></tr></table></figure>
+
+<p>Next is rails</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"gem: --no-ri --no-rdoc"</span> &gt; ~/.gemrc</div></pre></td></tr></table></figure>
+
+<p>This is for simplicity.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">gem install rails -v <span class="number">4.1</span>.<span class="number">2</span></div><div class="line">rbenv rehash</div></pre></td></tr></table></figure>
+
+<p>Now database.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sudo</span> apt-get install mysql-server  mysql-client  libmysqlclient-dev</div></pre></td></tr></table></figure>
+
+<p>Environment ready!</p>
+<p><a href="http://happypeter.github.io/rails10/" target="_blank" rel="external">Reference</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="Step_by_Step">Step by Step</h2>
+<h3 id="Step_1">Step 1</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div c]]>
+    </summary>
+    
+      <category term="Ruby" scheme="http://freemanhsu.github.io/tags/Ruby/"/>
+    
+      <category term="Ruby on Rails" scheme="http://freemanhsu.github.io/tags/Ruby-on-Rails/"/>
+    
+      <category term="Ruby on Rails" scheme="http://freemanhsu.github.io/categories/Ruby-on-Rails/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Hello Hexo]]></title>
