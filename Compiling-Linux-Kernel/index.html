@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Compiling Linux Kernel | AndyHsu&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="To be prepared to make changes to the kernel, it’s necessary to give it a try to compile the linux kernel successfully.
+Environment
+
+VMware Fusion 7
+Ubuntu 12.04.5
+Root permission
+
+Objective
+Initially">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Compiling Linux Kernel">
+<meta property="og:url" content="http://freemanhsu.github.io/Compiling-Linux-Kernel/">
+<meta property="og:site_name" content="AndyHsu's Blog">
+<meta property="og:description" content="To be prepared to make changes to the kernel, it’s necessary to give it a try to compile the linux kernel successfully.
+Environment
+
+VMware Fusion 7
+Ubuntu 12.04.5
+Root permission
+
+Objective
+Initially">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Compiling Linux Kernel">
+<meta name="twitter:description" content="To be prepared to make changes to the kernel, it’s necessary to give it a try to compile the linux kernel successfully.
+Environment
+
+VMware Fusion 7
+Ubuntu 12.04.5
+Root permission
+
+Objective
+Initially">
+
+  
+    <link rel="alternative" href="/atom.xml" title="AndyHsu&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">AndyHsu&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://freemanhsu.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Compiling-Linux-Kernel" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Compiling-Linux-Kernel/" class="article-date">
+  <time datetime="2015-03-06T03:20:02.000Z" itemprop="datePublished">Mar 6 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Operating-System/">Operating System</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Compiling Linux Kernel
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>To be prepared to make changes to the kernel, it’s necessary to give it a try to compile the linux kernel successfully.</p>
+<h3 id="Environment">Environment</h3>
+<ul>
+<li>VMware Fusion 7</li>
+<li>Ubuntu 12.04.5</li>
+<li>Root permission</li>
+</ul>
+<h3 id="Objective">Objective</h3>
+<p>Initially, the kernel version of the Ubuntu 12.04.5 is 3.13.0-32-generic according to </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uname -r</div></pre></td></tr></table></figure>
+
+<p>If you wanna check your ubuntu version, use</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /etc/issue</div></pre></td></tr></table></figure>
+
+<p>Our goal is to update the version of kernel to newer one, in this case, 3.18.</p>
+<h3 id="Compile_the_Linux_Kernel">Compile the Linux Kernel</h3>
+<h5 id="1-_Download_the_kernel_from_here-">1. Download the kernel from <a href="http://www.kernel.org" target="_blank" rel="external">here</a>.</h5>
+<h5 id="2-_Copy_to_a_directory_and_extract-">2. Copy to a directory and extract.</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cp linux-<span class="number">3</span>.X.X.tar.xz /usr/src</div><div class="line"><span class="built_in">cd</span> /usr/src</div><div class="line">xz <span class="operator">-d</span> linux-<span class="number">3</span>.X.X.tar.xz</div><div class="line">tar -xf linux-<span class="number">3</span>.X.X.tar</div><div class="line"><span class="built_in">cd</span> linux-<span class="number">3</span>.X.X</div></pre></td></tr></table></figure>
+
+<h5 id="3-_If_not_the_first_time_to_compile">3. If not the first time to compile</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">make clean</div><div class="line">make mrproper</div></pre></td></tr></table></figure>
+
+<h5 id="4-_Configuration">4. Configuration</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make menuconfig</div></pre></td></tr></table></figure>
+
+<p>There might be a tiny prob here saying</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fatal error: curses.h: No such file or directory</div></pre></td></tr></table></figure>
+
+<p>Solution under Ubuntu:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sudo</span> apt-get install libncurses5-dev libncursesw5-dev</div></pre></td></tr></table></figure>
+
+<h5 id="5-_Compile">5. Compile</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">make</div><div class="line">make modules_install</div><div class="line">make install</div></pre></td></tr></table></figure>
+
+<p>Suggestion here: enlarge the memory size of your virtual system, which may help reduce the compiling time dramatically.</p>
+<p>It takes hours to compile with 1 core and 1-GB memory with GUI turned on…</p>
+<h5 id="6-_Update_GRUB">6. Update GRUB</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /boot</div><div class="line">mkinitramfs <span class="number">3.18</span>.<span class="number">8</span> -o initrd.img-<span class="number">3.18</span>.<span class="number">8</span></div><div class="line">cp /usr/src/linux-<span class="number">3.18</span>.<span class="number">8</span>/arch/x86_64/boot/bzImage /boot/vmlinuz-<span class="number">3.18</span>.<span class="number">8</span></div><div class="line">ln <span class="operator">-s</span> /boot/System.map-<span class="number">3.18</span>.<span class="number">8</span> /boot/System.map</div><div class="line"><span class="built_in">sudo</span> update-grub2</div></pre></td></tr></table></figure>
+
+<h5 id="7-_Reboot_and_Check!">7. Reboot and Check!</h5>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://freemanhsu.github.io/Compiling-Linux-Kernel/" data-id="slq5cvzmhafak3hu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux-Kernel/">Linux Kernel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/Start-a-Rails-Project/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Start a Rails Project</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+ 
+  <section id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="post-Compiling-Linux-Kernel" data-title="Compiling Linux Kernel" data-url="http://freemanhsu.github.io/Compiling-Linux-Kernel/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'freemanhsu'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
+  </section>
+  </section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Operating-System/">Operating System</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Ruby-on-Rails/">Ruby on Rails</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Kernel/">Linux Kernel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby/">Ruby</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ruby-on-Rails/">Ruby on Rails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Linux-Kernel/" style="font-size: NaNpx;">Linux Kernel</a><a href="/tags/Ruby/" style="font-size: NaNpx;">Ruby</a><a href="/tags/Ruby-on-Rails/" style="font-size: NaNpx;">Ruby on Rails</a><a href="/tags/Ubuntu/" style="font-size: NaNpx;">Ubuntu</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/Compiling-Linux-Kernel/">Compiling Linux Kernel</a>
+          </li>
+        
+          <li>
+            <a href="/Start-a-Rails-Project/">Start a Rails Project</a>
+          </li>
+        
+          <li>
+            <a href="/Hello-Hexo/">Hello Hexo</a>
+          </li>
+        
+          <li>
+            <a href="/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 Andy Hsu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+
+  </div>
+</body>
+</html>
