@@ -100,11 +100,9 @@
     <div id="main" class="main">
       <div class="main-inner">
         <div id="content" class="content">
-          
             
-          
 
-          <div id="posts" class="posts-expand">
+          <div id="posts" class="posts-collapse">
             
 
   <span class="archive-move-on"></span>
@@ -150,111 +148,11 @@
 
       <div class="post-meta">
         <span class="post-time">
-          
-            Posted on 2015-03-06
-          
+            03-06
         </span>
-
-        
-          
-            <span class="post-category">
-              &nbsp; | &nbsp; In
-              
-                <a href="/categories/Operating-System/">Operating System</a>
-
-                
-                
-
-              
-            </span>
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/Compiling-Linux-Kernel/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="Compiling-Linux-Kernel/"></span>
-            </a>
-          </span>
-          
-        
       </div>
     </div>
 
-    
-      <div class="post-body">
-
-        
-        
-
-        
-          <p>To be prepared to make changes to the kernel, it’s necessary to give it a try to compile the linux kernel successfully.</p>
-<h3 id="Environment">Environment</h3>
-<ul>
-<li>VMware Fusion 7</li>
-<li>Ubuntu 12.04.5</li>
-<li>Root permission</li>
-</ul>
-<a id="more"></a>
-<h3 id="Objective">Objective</h3>
-<p>Initially, the kernel version of the Ubuntu 12.04.5 is 3.13.0-32-generic according to </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uname -r</div></pre></td></tr></table></figure>
-
-<p>If you wanna check your ubuntu version, use</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /etc/issue</div></pre></td></tr></table></figure>
-
-<p>Our goal is to update the version of kernel to newer one, in this case, 3.18.</p>
-<h3 id="Compile_the_Linux_Kernel">Compile the Linux Kernel</h3>
-<h5 id="1-_Download_the_kernel_from_here-">1. Download the kernel from <a href="http://www.kernel.org" target="_blank" rel="external">here</a>.</h5>
-<h5 id="2-_Copy_to_a_directory_and_extract-">2. Copy to a directory and extract.</h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cp linux-<span class="number">3</span>.X.X.tar.xz /usr/src</div><div class="line"><span class="built_in">cd</span> /usr/src</div><div class="line">xz <span class="operator">-d</span> linux-<span class="number">3</span>.X.X.tar.xz</div><div class="line">tar -xf linux-<span class="number">3</span>.X.X.tar</div><div class="line"><span class="built_in">cd</span> linux-<span class="number">3</span>.X.X</div></pre></td></tr></table></figure>
-
-<h5 id="3-_If_not_the_first_time_to_compile">3. If not the first time to compile</h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">make clean</div><div class="line">make mrproper</div></pre></td></tr></table></figure>
-
-<h5 id="4-_Configuration">4. Configuration</h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make menuconfig</div></pre></td></tr></table></figure>
-
-<p>There might be a tiny prob here saying</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fatal error: curses.h: No such file or directory</div></pre></td></tr></table></figure>
-
-<p>Solution under Ubuntu:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sudo</span> apt-get install libncurses5-dev libncursesw5-dev</div></pre></td></tr></table></figure>
-
-<h5 id="5-_Compile">5. Compile</h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">make</div><div class="line">make modules_install</div><div class="line">make install</div></pre></td></tr></table></figure>
-
-<p>Suggestion here: enlarge the memory size of your virtual system, which may help reduce the compiling time dramatically.</p>
-<p>It takes hours to compile with 1 core and 1-GB memory with GUI turned on…</p>
-<h5 id="6-_Update_GRUB">6. Update GRUB</h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /boot</div><div class="line">mkinitramfs <span class="number">3.18</span>.<span class="number">8</span> -o initrd.img-<span class="number">3.18</span>.<span class="number">8</span></div><div class="line">cp /usr/src/linux-<span class="number">3.18</span>.<span class="number">8</span>/arch/x86_64/boot/bzImage /boot/vmlinuz-<span class="number">3.18</span>.<span class="number">8</span></div><div class="line">ln <span class="operator">-s</span> /boot/System.map-<span class="number">3.18</span>.<span class="number">8</span> /boot/System.map</div><div class="line"><span class="built_in">sudo</span> update-grub2</div></pre></td></tr></table></figure>
-
-<h5 id="7-_Reboot_and_Check!">7. Reboot and Check!</h5>
-
-        
-      </div>
-    
-
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/Linux-Kernel/">
-                #Linux Kernel
-              </a>
-            
-          </div>
-        
-
-        
-
-        
-        
-      </div>
-    
   </div>
 
 

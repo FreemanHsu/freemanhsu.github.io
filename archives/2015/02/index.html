@@ -100,11 +100,9 @@
     <div id="main" class="main">
       <div class="main-inner">
         <div id="content" class="content">
-          
             
-          
 
-          <div id="posts" class="posts-expand">
+          <div id="posts" class="posts-collapse">
             
 
   <span class="archive-move-on"></span>
@@ -150,111 +148,11 @@
 
       <div class="post-meta">
         <span class="post-time">
-          
-            Posted on 2015-02-19
-          
+            02-19
         </span>
-
-        
-          
-            <span class="post-category">
-              &nbsp; | &nbsp; In
-              
-                <a href="/categories/Ruby-on-Rails/">Ruby on Rails</a>
-
-                
-                
-
-              
-            </span>
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/Start-a-Rails-Project/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="Start-a-Rails-Project/"></span>
-            </a>
-          </span>
-          
-        
       </div>
     </div>
 
-    
-      <div class="post-body">
-
-        
-        
-
-        
-          <h2 id="Step_by_Step">Step by Step</h2>
-<h3 id="Step_1">Step 1</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir &lt;project name&gt;   </div><div class="line"><span class="built_in">cd</span> &lt;project name&gt;</div><div class="line">vagrant init ubuntu/trusty64</div><div class="line">vagrant up</div></pre></td></tr></table></figure>
-
-<a id="more"></a>
-<h3 id="Step_2">Step 2</h3>
-<p>Change the memory size, which is necessary for developing.<br>We also give the virtual machine a fixed IP address for convenience.<br>Modify Vagrantfile with your favourite editor, adding the following lines.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">config.vm.provider <span class="string">"virtualbox"</span> <span class="keyword">do</span> |v|</div><div class="line">  v.memory = <span class="number">2048</span></div><div class="line">end</div><div class="line">config.vm.network :private_network, ip: <span class="string">"192.168.33.33"</span></div></pre></td></tr></table></figure>
-
-<p>and then  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vagrant reload</div></pre></td></tr></table></figure>
-
-<p>More for IP address,</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sudo</span> vim /etc/hosts</div></pre></td></tr></table></figure>
-
-<p>and add</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">192.168</span>.<span class="number">33.33</span> &lt;project name&gt;.dev</div></pre></td></tr></table></figure>
-
-<h3 id="Step_3">Step 3</h3>
-<p>Time for installing rails.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vagrant ssh</div></pre></td></tr></table></figure>
-
-<p>and type in following lines one by one</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sudo</span> apt-get update</div><div class="line"><span class="built_in">sudo</span> apt-get install -y git-core curl zlib1g-dev build-essential \</div><div class="line">                     libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 \</div><div class="line">                     libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common</div></pre></td></tr></table></figure>
-
-<p>Install rbenv, which is a tool for installing ruby and version control of ruby.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> </div><div class="line">git clone git://github.com/sstephenson/rbenv.git .rbenv</div><div class="line"><span class="built_in">echo</span> <span class="string">'export PATH="$HOME/.rbenv/bin:$PATH"'</span> &gt;&gt; ~/.bashrc</div><div class="line"><span class="built_in">echo</span> <span class="string">'eval "$(rbenv init -)"'</span> &gt;&gt; ~/.bashrc</div><div class="line">git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build</div><div class="line"><span class="built_in">echo</span> <span class="string">'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"'</span> &gt;&gt; ~/.bashrc</div><div class="line"><span class="keyword">exec</span> <span class="variable">$SHELL</span></div></pre></td></tr></table></figure>
-
-<p>Now is ruby</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rbenv install <span class="number">2.1</span>.<span class="number">2</span></div><div class="line">rbenv global <span class="number">2.1</span>.<span class="number">2</span></div></pre></td></tr></table></figure>
-
-<p>Next is rails</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"gem: --no-ri --no-rdoc"</span> &gt; ~/.gemrc</div></pre></td></tr></table></figure>
-
-<p>This is for simplicity.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">gem install rails -v <span class="number">4.1</span>.<span class="number">2</span></div><div class="line">rbenv rehash</div></pre></td></tr></table></figure>
-
-<p>Now database.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sudo</span> apt-get install mysql-server  mysql-client  libmysqlclient-dev</div></pre></td></tr></table></figure>
-
-<p>Environment ready!</p>
-<p><a href="http://happypeter.github.io/rails10/" target="_blank" rel="external">Reference</a></p>
-
-        
-      </div>
-    
-
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/Ruby-on-Rails/">
-                #Ruby on Rails
-              </a>
-            
-          </div>
-        
-
-        
-
-        
-        
-      </div>
-    
   </div>
 
 
@@ -287,55 +185,11 @@
 
       <div class="post-meta">
         <span class="post-time">
-          
-            Posted on 2015-02-04
-          
+            02-04
         </span>
-
-        
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/Hello-Hexo/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="Hello-Hexo/"></span>
-            </a>
-          </span>
-          
-        
       </div>
     </div>
 
-    
-      <div class="post-body">
-
-        
-        
-
-        
-          <p>After going through blog systems as wordpress, jekyll, farbox, etc. Downloading, configuring, deploying, writing one episode or two and turn to another one…</p>
-<a id="more"></a>
-<p>Okay, here I am, with Hexo! Why Hexo? I finally realized that what’s important is keep blogging when I happened to try Hexo… </p>
-<h3 id="LOL">LOL</h3>
-<h3 id="Keep_Blogging-">Keep Blogging.</h3>
-
-        
-      </div>
-    
-
-    
-      <div class="post-footer">
-        
-
-        
-
-        
-        
-      </div>
-    
   </div>
 
 
