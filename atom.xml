@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://freemanhsu.github.io/"/>
-  <updated>2015-03-06T06:52:40.142Z</updated>
+  <updated>2015-03-30T13:14:44.348Z</updated>
   <id>http://freemanhsu.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://freemanhsu.github.io/Compiling-Linux-Kernel/"/>
     <id>http://freemanhsu.github.io/Compiling-Linux-Kernel/</id>
     <published>2015-03-06T03:20:02.000Z</published>
-    <updated>2015-03-06T06:29:30.000Z</updated>
+    <updated>2015-03-30T13:01:58.000Z</updated>
     <content type="html"><![CDATA[<p>To be prepared to make changes to the kernel, it’s necessary to give it a try to compile the linux kernel successfully.</p>
 <h3 id="Environment">Environment</h3>
 <ul>
@@ -27,6 +27,7 @@
 <li>Ubuntu 12.04.5</li>
 <li>Root permission</li>
 </ul>
+<a id="more"></a>
 <h3 id="Objective">Objective</h3>
 <p>Initially, the kernel version of the Ubuntu 12.04.5 is 3.13.0-32-generic according to </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uname -r</div></pre></td></tr></table></figure>
@@ -64,12 +65,17 @@
 ]]></content>
     <summary type="html">
     <![CDATA[<p>To be prepared to make changes to the kernel, it’s necessary to give it a try to compile the linux kernel successfully.</p>
-<h3 id="Envir]]>
+<h3 id="Environment">Environment</h3>
+<ul>
+<li>VMware Fusion 7</li>
+<li>Ubuntu 12.04.5</li>
+<li>Root permission</li>
+</ul>
+]]>
+    
     </summary>
     
       <category term="Linux Kernel" scheme="http://freemanhsu.github.io/tags/Linux-Kernel/"/>
-    
-      <category term="Ubuntu" scheme="http://freemanhsu.github.io/tags/Ubuntu/"/>
     
       <category term="Operating System" scheme="http://freemanhsu.github.io/categories/Operating-System/"/>
     
@@ -80,11 +86,12 @@
     <link href="http://freemanhsu.github.io/Start-a-Rails-Project/"/>
     <id>http://freemanhsu.github.io/Start-a-Rails-Project/</id>
     <published>2015-02-19T15:25:48.000Z</published>
-    <updated>2015-02-19T16:11:49.000Z</updated>
+    <updated>2015-03-30T13:03:28.000Z</updated>
     <content type="html"><![CDATA[<h2 id="Step_by_Step">Step by Step</h2>
 <h3 id="Step_1">Step 1</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir &lt;project name&gt;   </div><div class="line"><span class="built_in">cd</span> &lt;project name&gt;</div><div class="line">vagrant init ubuntu/trusty64</div><div class="line">vagrant up</div></pre></td></tr></table></figure>
 
+<a id="more"></a>
 <h3 id="Step_2">Step 2</h3>
 <p>Change the memory size, which is necessary for developing.<br>We also give the virtual machine a fixed IP address for convenience.<br>Modify Vagrantfile with your favourite editor, adding the following lines.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">config.vm.provider <span class="string">"virtualbox"</span> <span class="keyword">do</span> |v|</div><div class="line">  v.memory = <span class="number">2048</span></div><div class="line">end</div><div class="line">config.vm.network :private_network, ip: <span class="string">"192.168.33.33"</span></div></pre></td></tr></table></figure>
@@ -126,10 +133,11 @@
     <summary type="html">
     <![CDATA[<h2 id="Step_by_Step">Step by Step</h2>
 <h3 id="Step_1">Step 1</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div c]]>
-    </summary>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir &lt;project name&gt;   </div><div class="line"><span class="built_in">cd</span> &lt;project name&gt;</div><div class="line">vagrant init ubuntu/trusty64</div><div class="line">vagrant up</div></pre></td></tr></table></figure>
+
+]]>
     
-      <category term="Ruby" scheme="http://freemanhsu.github.io/tags/Ruby/"/>
+    </summary>
     
       <category term="Ruby on Rails" scheme="http://freemanhsu.github.io/tags/Ruby-on-Rails/"/>
     
@@ -142,45 +150,17 @@
     <link href="http://freemanhsu.github.io/Hello-Hexo/"/>
     <id>http://freemanhsu.github.io/Hello-Hexo/</id>
     <published>2015-02-04T15:50:31.000Z</published>
-    <updated>2015-02-04T16:07:18.000Z</updated>
+    <updated>2015-03-30T13:00:59.000Z</updated>
     <content type="html"><![CDATA[<p>After going through blog systems as wordpress, jekyll, farbox, etc. Downloading, configuring, deploying, writing one episode or two and turn to another one…</p>
+<a id="more"></a>
 <p>Okay, here I am, with Hexo! Why Hexo? I finally realized that what’s important is keep blogging when I happened to try Hexo… </p>
 <h3 id="LOL">LOL</h3>
 <h3 id="Keep_Blogging-">Keep Blogging.</h3>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>After going through blog systems as wordpress, jekyll, farbox, etc. Downloading, configuring, deploying, writing one episode or two and t]]>
-    </summary>
+    <![CDATA[<p>After going through blog systems as wordpress, jekyll, farbox, etc. Downloading, configuring, deploying, writing one episode or two and turn to another one…</p>
+]]>
     
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <link href="http://freemanhsu.github.io/hello-world/"/>
-    <id>http://freemanhsu.github.io/hello-world/</id>
-    <published>2015-02-04T15:04:39.000Z</published>
-    <updated>2015-02-04T15:04:39.000Z</updated>
-    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2>
-<h3 id="Create_a_new_post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io]]>
     </summary>
     
   </entry>
