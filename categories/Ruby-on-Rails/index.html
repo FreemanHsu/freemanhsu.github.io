@@ -126,6 +126,107 @@
           
           
             
+              Failing to Connect to Rails Server on VM
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          
+            Posted on 2015-04-07
+          
+        </span>
+
+        
+          
+            <span class="post-category">
+              &nbsp; | &nbsp; In
+              
+                <a href="/categories/Ruby-on-Rails/">Ruby on Rails</a>
+
+                
+                
+
+              
+            </span>
+          
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/Failing-to-Connect-to-Rails-Server-on-VM/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="Failing-to-Connect-to-Rails-Server-on-VM/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          <p>I’ve been using vagrant to set up ruby on rails project environment, which is best practice in my opinion. One can perfectly and easily have a clean envrionment, in my case, ubuntu64 to put the whole rails server in while coding in familiar platform using favourite editor.</p>
+<p>Usually, I would type in shell the following commands</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vagrant up</div><div class="line">vagrant ssh</div><div class="line"><span class="built_in">cd</span> &lt;project folder&gt;</div><div class="line">rails s</div></pre></td></tr></table></figure>
+
+<a id="more"></a>
+<p>the server is up and I can open Chrome on MacOS and type in <project>.dev:3000 to have a look at the website under development. <project>.dev is an alias to the IP address of the virtual machine. It’s all beautiful.</project></project></p>
+<p>However, when I set up a new project today as usual and open up a browser, the server did not respond.</p>
+<p>At first I thought it was the rails’s problem. So I tried to connect to the server locally with telnet.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">telnet localhost <span class="number">3000</span></div><div class="line">GET / HTTP/<span class="number">1.0</span></div><div class="line">Content-Type:text/html; charset=UTF-<span class="number">8</span></div></pre></td></tr></table></figure>
+
+<p>which performed perfectly.</p>
+<p>It turns out that when I http request <project>.dev:3000, the server received nothing at all. Though I still don’t get what’s different from the previous ones, I forced the server listen to the ip address on start up and the problem is solved.</project></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rails s -b <span class="number">192.168</span>.<span class="number">34.34</span></div></pre></td></tr></table></figure>
+
+<p>The server listens to <a href="http://localhost:3000" target="_blank" rel="external">http://localhost:3000</a> by default, then the problem is how the previous ones worked… LOL</p>
+
+        
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/Ruby-on-Rails/">
+                #Ruby on Rails
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+        
+      </div>
+    
+  </div>
+
+
+  
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               Start a Rails Project
             
           
@@ -281,7 +382,7 @@
       <p class="site-description motion-element"></p>
       <div class="site-state motion-element">
         <div class="site-state-item site-state-posts">
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </div>
         <div class="site-state-item site-state-tags">
