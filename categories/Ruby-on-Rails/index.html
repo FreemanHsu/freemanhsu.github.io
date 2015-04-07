@@ -179,16 +179,16 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vagrant up</div><div class="line">vagrant ssh</div><div class="line"><span class="built_in">cd</span> &lt;project folder&gt;</div><div class="line">rails s</div></pre></td></tr></table></figure>
 
 <a id="more"></a>
-<p>the server is up and I can open Chrome on MacOS and type in \<project\>.dev:3000 to have a look at the website under development. \<project\>.dev is an alias to the IP address of the virtual machine. It’s all beautiful.</project\></project\></p>
+<p>the server is up and I can open Chrome on MacOS and type in <a href="#">[project-name].dev:3000</a> to have a look at the website under development. <a href="#">[project-name].dev</a> is an alias to the IP address of the virtual machine. It’s all beautiful.</p>
 <p>However, when I set up a new project today as usual and open up a browser, the server did not respond.</p>
 <p>At first I thought it was the rails’s problem. So I tried to connect to the server locally with telnet.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">telnet localhost <span class="number">3000</span></div><div class="line">GET / HTTP/<span class="number">1.0</span></div><div class="line">Content-Type:text/html; charset=UTF-<span class="number">8</span></div></pre></td></tr></table></figure>
 
 <p>which performed perfectly.</p>
-<p>It turns out that when I http request \<project\>.dev:3000, the server received nothing at all. Though I still don’t get what’s different from the previous ones, I forced the server listen to the ip address on start up and the problem is solved.</project\></p>
+<p>It turns out that when I http request <a href="#">[project-name].dev:3000</a>, the server received nothing at all. Though I still don’t get what’s different from the previous ones, I forced the server listen to the ip address on start up and the problem is solved.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rails s -b <span class="number">192.168</span>.<span class="number">34.34</span></div></pre></td></tr></table></figure>
 
-<p>The server listens to <a href="http://localhost:3000" target="_blank" rel="external">http://localhost:3000</a> by default, then the problem is how the previous ones worked… LOL</p>
+<p>The server listens to <a href="#">http://localhost:3000</a> by default, then the problem is how the previous ones worked… LOL</p>
 
         
       </div>
