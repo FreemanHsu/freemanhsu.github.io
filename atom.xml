@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://freemanhsu.github.io/"/>
-  <updated>2015-04-07T11:56:45.274Z</updated>
+  <updated>2015-04-20T13:44:11.017Z</updated>
   <id>http://freemanhsu.github.io/</id>
   
   <author>
@@ -13,6 +13,29 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[]]></title>
+    <link href="http://freemanhsu.github.io/Alibaba-Interview/"/>
+    <id>http://freemanhsu.github.io/Alibaba-Interview/</id>
+    <published>2015-04-20T13:43:47.000Z</published>
+    <updated>2015-04-20T13:43:46.000Z</updated>
+    <content type="html"><![CDATA[<p>title: Alibaba Interview<br>date: 2015-04-20 21:39:45<br>categories:</p>
+<ul>
+<li>Andy’s Notes<br>tags:<br>－Interview</li>
+<li>Alibaba</li>
+</ul>
+<hr>
+<p>巴拉巴啦</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>title: Alibaba Interview<br>date: 2015-04-20 21:39:45<br>categories:</p>
+<ul>
+<li>Andy’s Notes<br>tags:<br>－Interview</li>
+<li>Alibaba</l]]>
+    </summary>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Failing to Connect to Rails Server on VM]]></title>
