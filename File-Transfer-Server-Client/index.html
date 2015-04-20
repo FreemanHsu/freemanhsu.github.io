@@ -18,9 +18,9 @@
 
 
 
-	<meta name="keywords" content="Linux Kernel," />
+	<meta name="keywords" content="socket," />
 
-  <title> Compiling Linux Kernel // AndyHsu's Blog </title>
+  <title> File Transfer Server & Client // AndyHsu's Blog </title>
 </head>
 
 <body>
@@ -109,7 +109,7 @@
           
           
             
-              Compiling Linux Kernel
+              File Transfer Server & Client
             
           
         </h1>
@@ -118,7 +118,7 @@
       <div class="post-meta">
         <span class="post-time">
           
-            Posted on 2015-03-06
+            Posted on 2015-04-20
           
         </span>
 
@@ -127,7 +127,7 @@
             <span class="post-category">
               &nbsp; | &nbsp; In
               
-                <a href="/categories/Operating-System/">Operating System</a>
+                <a href="/categories/networking/">networking</a>
 
                 
                 
@@ -141,8 +141,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/Compiling-Linux-Kernel/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="Compiling-Linux-Kernel/"></span>
+            <a href="/File-Transfer-Server-Client/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="File-Transfer-Server-Client/"></span>
             </a>
           </span>
           
@@ -157,48 +157,41 @@
         
 
         
-          <p>To be prepared to make changes to the kernel, it’s necessary to give it a try to compile the linux kernel successfully.</p>
-<h3 id="Environment">Environment</h3>
+          <h3 id="Socket_Programming_Practice">Socket Programming Practice</h3>
 <ul>
-<li>VMware Fusion 7</li>
-<li>Ubuntu 12.04.5</li>
-<li>Root permission</li>
+<li>File Transfer Server &amp; Client </li>
+<li>Ftp Client</li>
 </ul>
-<a id="more"></a>
-<h3 id="Objective">Objective</h3>
-<p>Initially, the kernel version of the Ubuntu 12.04.5 is 3.13.0-32-generic according to </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uname -r</div></pre></td></tr></table></figure>
-
-<p>If you wanna check your ubuntu version, use</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /etc/issue</div></pre></td></tr></table></figure>
-
-<p>Our goal is to update the version of kernel to newer one, in this case, 3.18.</p>
-<h3 id="Compile_the_Linux_Kernel">Compile the Linux Kernel</h3>
-<h5 id="1-_Download_the_kernel_from_here-">1. Download the kernel from <a href="http://www.kernel.org" target="_blank" rel="external">here</a>.</h5>
-<h5 id="2-_Copy_to_a_directory_and_extract-">2. Copy to a directory and extract.</h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cp linux-<span class="number">3</span>.X.X.tar.xz /usr/src</div><div class="line"><span class="built_in">cd</span> /usr/src</div><div class="line">xz <span class="operator">-d</span> linux-<span class="number">3</span>.X.X.tar.xz</div><div class="line">tar -xf linux-<span class="number">3</span>.X.X.tar</div><div class="line"><span class="built_in">cd</span> linux-<span class="number">3</span>.X.X</div></pre></td></tr></table></figure>
-
-<h5 id="3-_If_not_the_first_time_to_compile">3. If not the first time to compile</h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">make clean</div><div class="line">make mrproper</div></pre></td></tr></table></figure>
-
-<h5 id="4-_Configuration">4. Configuration</h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make menuconfig</div></pre></td></tr></table></figure>
-
-<p>There might be a tiny prob here saying</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fatal error: curses.h: No such file or directory</div></pre></td></tr></table></figure>
-
-<p>Solution under Ubuntu:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sudo</span> apt-get install libncurses5-dev libncursesw5-dev</div></pre></td></tr></table></figure>
-
-<h5 id="5-_Compile">5. Compile</h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">make</div><div class="line">make modules_install</div><div class="line">make install</div></pre></td></tr></table></figure>
-
-<p>Suggestion here: enlarge the memory size of your virtual system, which may help reduce the compiling time dramatically.</p>
-<p>It takes hours to compile with 1 core and 1-GB memory with GUI turned on…</p>
-<h5 id="6-_Update_GRUB">6. Update GRUB</h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /boot</div><div class="line">mkinitramfs <span class="number">3.18</span>.<span class="number">8</span> -o initrd.img-<span class="number">3.18</span>.<span class="number">8</span></div><div class="line">cp /usr/src/linux-<span class="number">3.18</span>.<span class="number">8</span>/arch/x86_64/boot/bzImage /boot/vmlinuz-<span class="number">3.18</span>.<span class="number">8</span></div><div class="line">ln <span class="operator">-s</span> /boot/System.map-<span class="number">3.18</span>.<span class="number">8</span> /boot/System.map</div><div class="line"><span class="built_in">sudo</span> update-grub2</div></pre></td></tr></table></figure>
-
-<h5 id="7-_Reboot_and_Check!">7. Reboot and Check!</h5>
+<h3 id="File_Transfer_Server_&amp;_Client">File Transfer Server &amp; Client</h3>
+<p><a href="https://github.com/FreemanHsu/socketFTP" target="_blank" rel="external">repo here</a></p>
+<p>In this part, I implemented a pair of file transfer server and client without reading the ftp protocol, which turned out to be naive compared to the ftp. Still I learned much from this experience, about socket programming and pit falls.</p>
+<p>Here is a brief introduction of my implementation.</p>
+<h4 id="Screenshot">Screenshot</h4>
+<p><img src="../images/screenshot.png" alt="screentshot"></p>
+<h4 id="Commands">Commands</h4>
+<ul>
+<li>help</li>
+<li>ls</li>
+<li>cd remote-dir</li>
+<li>append local-file [remote-file]</li>
+<li>get remote-file [local-file]</li>
+<li>delete remote-file</li>
+<li>pwd</li>
+<li>bye</li>
+</ul>
+<p>The server starts on a specified port, waiting for the clients to connect.<br>When clients successfully connect to the server, try the given commands to view, cd into or out of the server folders, to - upload or download the files, to - indicate the current working directory or delete files on the server, - or just say goodbye to the server.</p>
+<h4 id="Here_are_some_features_supported:">Here are some features supported:</h4>
+<ul>
+<li>Varied length of message delivery by indication with a prefix.</li>
+<li>Multiple clients connection.</li>
+<li>If necessary, create the base directory for the file transfer server.</li>
+<li>Clients can never go out of the range of the base directory, spoiling the files on the server.</li>
+<li>Show process of uploading and downloading.</li>
+<li>Prompts for append/get commands.</li>
+</ul>
+<h3 id="Ftp_Client">Ftp Client</h3>
+<p>Currently a prototype, connecting to an existing ftp server.</p>
+<p>Todo: fully-fledged ftp client.</p>
 
         
       </div>
@@ -209,8 +202,8 @@
         
           <div class="post-tags">
             
-              <a href="/tags/Linux-Kernel/">
-                #Linux Kernel
+              <a href="/tags/socket/">
+                #socket
               </a>
             
           </div>
@@ -220,13 +213,11 @@
           <div class="post-nav">
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/Failing-to-Connect-to-Rails-Server-on-VM/">Failing to Connect to Rails Server on VM</a>
-              
             </div>
 
             <div class="post-nav-next post-nav-item">
               
-                <a href="/Start-a-Rails-Project/">Start a Rails Project</a>
+                <a href="/Alibaba-Interview/">阿里面试小结</a>
               
             </div>
           </div>
@@ -243,8 +234,8 @@
   
     <div class="comments" id="comments">
       
-        <div class="ds-thread" data-thread-key="Compiling-Linux-Kernel/"
-             data-title="Compiling Linux Kernel" data-url="http://freemanhsu.github.io/Compiling-Linux-Kernel/">
+        <div class="ds-thread" data-thread-key="File-Transfer-Server-Client/"
+             data-title="File Transfer Server & Client" data-url="http://freemanhsu.github.io/File-Transfer-Server-Client/">
         </div>
 
       
@@ -323,7 +314,7 @@
         <div class="post-toc">
           
           
-            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Environment"><span class="nav-number">1.</span> <span class="nav-text">Environment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Objective"><span class="nav-number">2.</span> <span class="nav-text">Objective</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Compile_the_Linux_Kernel"><span class="nav-number">3.</span> <span class="nav-text">Compile the Linux Kernel</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-_Download_the_kernel_from_here-"><span class="nav-number">3.0.1.</span> <span class="nav-text">1. Download the kernel from here.</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-_Copy_to_a_directory_and_extract-"><span class="nav-number">3.0.2.</span> <span class="nav-text">2. Copy to a directory and extract.</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-_If_not_the_first_time_to_compile"><span class="nav-number">3.0.3.</span> <span class="nav-text">3. If not the first time to compile</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-_Configuration"><span class="nav-number">3.0.4.</span> <span class="nav-text">4. Configuration</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-_Compile"><span class="nav-number">3.0.5.</span> <span class="nav-text">5. Compile</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-_Update_GRUB"><span class="nav-number">3.0.6.</span> <span class="nav-text">6. Update GRUB</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-_Reboot_and_Check!"><span class="nav-number">3.0.7.</span> <span class="nav-text">7. Reboot and Check!</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Socket_Programming_Practice"><span class="nav-number">1.</span> <span class="nav-text">Socket Programming Practice</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#File_Transfer_Server_&_Client"><span class="nav-number">2.</span> <span class="nav-text">File Transfer Server & Client</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Screenshot"><span class="nav-number">2.1.</span> <span class="nav-text">Screenshot</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Commands"><span class="nav-number">2.2.</span> <span class="nav-text">Commands</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Here_are_some_features_supported:"><span class="nav-number">2.3.</span> <span class="nav-text">Here are some features supported:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ftp_Client"><span class="nav-number">3.</span> <span class="nav-text">Ftp Client</span></a></li></ol></div>
           
         </div>
         <div class="post-toc-indicator-bottom post-toc-indicator"></div>

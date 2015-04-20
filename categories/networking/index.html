@@ -28,9 +28,7 @@
 
 
 
-  <title>
-  categories // AndyHsu's Blog
-</title>
+  <title> Category: networking // AndyHsu's Blog </title>
 </head>
 
 <body>
@@ -109,16 +107,134 @@
           <div id="posts" class="posts-expand">
             
 
+  <div class="collection-title">
+    <h2 >
+      networking
+      <small>Category</small>
+    </h2>
+  </div>
+
   
-  
-    <div class="category-all-page">
-      <div class="category-all-title">
-          5 categories in total
-      </div>
-      <div class="category-all">
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Andy-s-Notes/">Andy's Notes</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Operating-System/">Operating System</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Ruby-on-Rails/">Ruby on Rails</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/networking/">networking</a><span class="category-list-count">1</span></li></ul>
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              File Transfer Server & Client
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          
+            Posted on 2015-04-20
+          
+        </span>
+
+        
+          
+            <span class="post-category">
+              &nbsp; | &nbsp; In
+              
+                <a href="/categories/networking/">networking</a>
+
+                
+                
+
+              
+            </span>
+          
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/File-Transfer-Server-Client/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="File-Transfer-Server-Client/"></span>
+            </a>
+          </span>
+          
+        
       </div>
     </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          <h3 id="Socket_Programming_Practice">Socket Programming Practice</h3>
+<ul>
+<li>File Transfer Server &amp; Client </li>
+<li>Ftp Client</li>
+</ul>
+<h3 id="File_Transfer_Server_&amp;_Client">File Transfer Server &amp; Client</h3>
+<p><a href="https://github.com/FreemanHsu/socketFTP" target="_blank" rel="external">repo here</a></p>
+<p>In this part, I implemented a pair of file transfer server and client without reading the ftp protocol, which turned out to be naive compared to the ftp. Still I learned much from this experience, about socket programming and pit falls.</p>
+<p>Here is a brief introduction of my implementation.</p>
+<h4 id="Screenshot">Screenshot</h4>
+<p><img src="../images/screenshot.png" alt="screentshot"></p>
+<h4 id="Commands">Commands</h4>
+<ul>
+<li>help</li>
+<li>ls</li>
+<li>cd remote-dir</li>
+<li>append local-file [remote-file]</li>
+<li>get remote-file [local-file]</li>
+<li>delete remote-file</li>
+<li>pwd</li>
+<li>bye</li>
+</ul>
+<p>The server starts on a specified port, waiting for the clients to connect.<br>When clients successfully connect to the server, try the given commands to view, cd into or out of the server folders, to - upload or download the files, to - indicate the current working directory or delete files on the server, - or just say goodbye to the server.</p>
+<h4 id="Here_are_some_features_supported:">Here are some features supported:</h4>
+<ul>
+<li>Varied length of message delivery by indication with a prefix.</li>
+<li>Multiple clients connection.</li>
+<li>If necessary, create the base directory for the file transfer server.</li>
+<li>Clients can never go out of the range of the base directory, spoiling the files on the server.</li>
+<li>Show process of uploading and downloading.</li>
+<li>Prompts for append/get commands.</li>
+</ul>
+<h3 id="Ftp_Client">Ftp Client</h3>
+<p>Currently a prototype, connecting to an existing ftp server.</p>
+<p>Todo: fully-fledged ftp client.</p>
+
+        
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/socket/">
+                #socket
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+        
+      </div>
+    
+  </div>
+
+
   
 
 

@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://freemanhsu.github.io/"/>
-  <updated>2015-04-20T15:40:47.328Z</updated>
+  <updated>2015-04-20T16:44:00.007Z</updated>
   <id>http://freemanhsu.github.io/</id>
   
   <author>
@@ -13,6 +13,62 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[File Transfer Server & Client]]></title>
+    <link href="http://freemanhsu.github.io/File-Transfer-Server-Client/"/>
+    <id>http://freemanhsu.github.io/File-Transfer-Server-Client/</id>
+    <published>2015-04-20T16:37:09.000Z</published>
+    <updated>2015-04-20T16:43:26.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="Socket_Programming_Practice">Socket Programming Practice</h3>
+<ul>
+<li>File Transfer Server &amp; Client </li>
+<li>Ftp Client</li>
+</ul>
+<h3 id="File_Transfer_Server_&amp;_Client">File Transfer Server &amp; Client</h3>
+<p><a href="https://github.com/FreemanHsu/socketFTP" target="_blank" rel="external">repo here</a></p>
+<p>In this part, I implemented a pair of file transfer server and client without reading the ftp protocol, which turned out to be naive compared to the ftp. Still I learned much from this experience, about socket programming and pit falls.</p>
+<p>Here is a brief introduction of my implementation.</p>
+<h4 id="Screenshot">Screenshot</h4>
+<p><img src="../images/screenshot.png" alt="screentshot"></p>
+<h4 id="Commands">Commands</h4>
+<ul>
+<li>help</li>
+<li>ls</li>
+<li>cd remote-dir</li>
+<li>append local-file [remote-file]</li>
+<li>get remote-file [local-file]</li>
+<li>delete remote-file</li>
+<li>pwd</li>
+<li>bye</li>
+</ul>
+<p>The server starts on a specified port, waiting for the clients to connect.<br>When clients successfully connect to the server, try the given commands to view, cd into or out of the server folders, to - upload or download the files, to - indicate the current working directory or delete files on the server, - or just say goodbye to the server.</p>
+<h4 id="Here_are_some_features_supported:">Here are some features supported:</h4>
+<ul>
+<li>Varied length of message delivery by indication with a prefix.</li>
+<li>Multiple clients connection.</li>
+<li>If necessary, create the base directory for the file transfer server.</li>
+<li>Clients can never go out of the range of the base directory, spoiling the files on the server.</li>
+<li>Show process of uploading and downloading.</li>
+<li>Prompts for append/get commands.</li>
+</ul>
+<h3 id="Ftp_Client">Ftp Client</h3>
+<p>Currently a prototype, connecting to an existing ftp server.</p>
+<p>Todo: fully-fledged ftp client.</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="Socket_Programming_Practice">Socket Programming Practice</h3>
+<ul>
+<li>File Transfer Server &amp; Client </li>
+<li>Ftp Client</li>
+<]]>
+    </summary>
+    
+      <category term="socket" scheme="http://freemanhsu.github.io/tags/socket/"/>
+    
+      <category term="networking" scheme="http://freemanhsu.github.io/categories/networking/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[阿里面试小结]]></title>
