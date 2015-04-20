@@ -181,6 +181,7 @@
 </ul>
 <h3 id="File_Transfer_Server_&amp;_Client">File Transfer Server &amp; Client</h3>
 <p><a href="https://github.com/FreemanHsu/socketFTP" target="_blank" rel="external">repo here</a></p>
+<a id="more"></a>
 <p>In this part, I implemented a pair of file transfer server and client without reading the ftp protocol, which turned out to be naive compared to the ftp. Still I learned much from this experience, about socket programming and pit falls.</p>
 <p>Here is a brief introduction of my implementation.</p>
 <h4 id="Screenshot">Screenshot</h4>
@@ -196,7 +197,7 @@
 <li>pwd</li>
 <li>bye</li>
 </ul>
-<p>The server starts on a specified port, waiting for the clients to connect.<br>When clients successfully connect to the server, try the given commands to view, cd into or out of the server folders, to - upload or download the files, to - indicate the current working directory or delete files on the server, - or just say goodbye to the server.</p>
+<p>The server starts on a specified port, waiting for the clients to connect.<br>When clients successfully connect to the server, try the given commands to view, cd into or out of the server folders, to upload or download the files, to indicate the current working directory or delete files on the server, or just say goodbye to the server.</p>
 <h4 id="Here_are_some_features_supported:">Here are some features supported:</h4>
 <ul>
 <li>Varied length of message delivery by indication with a prefix.</li>

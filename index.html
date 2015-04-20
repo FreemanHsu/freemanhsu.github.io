@@ -178,35 +178,12 @@
 </ul>
 <h3 id="File_Transfer_Server_&amp;_Client">File Transfer Server &amp; Client</h3>
 <p><a href="https://github.com/FreemanHsu/socketFTP" target="_blank" rel="external">repo here</a></p>
-<p>In this part, I implemented a pair of file transfer server and client without reading the ftp protocol, which turned out to be naive compared to the ftp. Still I learned much from this experience, about socket programming and pit falls.</p>
-<p>Here is a brief introduction of my implementation.</p>
-<h4 id="Screenshot">Screenshot</h4>
-<p><img src="../images/screenshot.png" alt="screentshot"></p>
-<h4 id="Commands">Commands</h4>
-<ul>
-<li>help</li>
-<li>ls</li>
-<li>cd remote-dir</li>
-<li>append local-file [remote-file]</li>
-<li>get remote-file [local-file]</li>
-<li>delete remote-file</li>
-<li>pwd</li>
-<li>bye</li>
-</ul>
-<p>The server starts on a specified port, waiting for the clients to connect.<br>When clients successfully connect to the server, try the given commands to view, cd into or out of the server folders, to - upload or download the files, to - indicate the current working directory or delete files on the server, - or just say goodbye to the server.</p>
-<h4 id="Here_are_some_features_supported:">Here are some features supported:</h4>
-<ul>
-<li>Varied length of message delivery by indication with a prefix.</li>
-<li>Multiple clients connection.</li>
-<li>If necessary, create the base directory for the file transfer server.</li>
-<li>Clients can never go out of the range of the base directory, spoiling the files on the server.</li>
-<li>Show process of uploading and downloading.</li>
-<li>Prompts for append/get commands.</li>
-</ul>
-<h3 id="Ftp_Client">Ftp Client</h3>
-<p>Currently a prototype, connecting to an existing ftp server.</p>
-<p>Todo: fully-fledged ftp client.</p>
 
+            <div class="post-more-link text-center">
+              <a class="btn" href="/File-Transfer-Server-Client/#more">
+                Read more &raquo;
+              </a>
+            </div>
           
         
       </div>
