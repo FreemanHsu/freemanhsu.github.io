@@ -18,21 +18,13 @@
 
 
 
+	<meta name="keywords" content="Linux Kernel," />
 
-
-
-
-
-    <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.0" />
-
-
-
-
-  <title> Tag: Linux Kernel // AndyHsu's Blog </title>
+  <title> Add Schedule Counter in Kernel // AndyHsu's Blog </title>
 </head>
 
 <body>
-  <div class="container one-column ">
+  <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
     <div id="header" class="header">
@@ -106,15 +98,7 @@
 
           <div id="posts" class="posts-expand">
             
-  <div class="collection-title">
-    <h2 >
-      Linux Kernel
-      <small>Tag</small>
-    </h2>
-  </div>
-
   
-    
 
   <div class="post post-type-normal ">
     <div class="post-header">
@@ -218,142 +202,36 @@
         
 
         
-
-        
-        
-      </div>
-    
-  </div>
-
-
-  
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              Compiling Linux Kernel
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          
-            Posted on 2015-03-06
-          
-        </span>
-
-        
-          
-            <span class="post-category">
-              &nbsp; | &nbsp; In
+          <div class="post-nav">
+            <div class="post-nav-prev post-nav-item">
               
-                <a href="/categories/Operating-System/">Operating System</a>
+            </div>
 
-                
-                
-
+            <div class="post-nav-next post-nav-item">
               
-            </span>
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/Compiling-Linux-Kernel/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="Compiling-Linux-Kernel/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    
-      <div class="post-body">
-
-        
-        
-
-        
-          <p>To be prepared to make changes to the kernel, it’s necessary to give it a try to compile the linux kernel successfully.</p>
-<h3 id="Environment">Environment</h3>
-<ul>
-<li>VMware Fusion 7</li>
-<li>Ubuntu 12.04.5</li>
-<li>Root permission</li>
-</ul>
-<a id="more"></a>
-<h3 id="Objective">Objective</h3>
-<p>Initially, the kernel version of the Ubuntu 12.04.5 is 3.13.0-32-generic according to </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uname -r</div></pre></td></tr></table></figure>
-
-<p>If you wanna check your ubuntu version, use</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /etc/issue</div></pre></td></tr></table></figure>
-
-<p>Our goal is to update the version of kernel to newer one, in this case, 3.18.</p>
-<h3 id="Compile_the_Linux_Kernel">Compile the Linux Kernel</h3>
-<h5 id="1-_Download_the_kernel_from_here-">1. Download the kernel from <a href="http://www.kernel.org" target="_blank" rel="external">here</a>.</h5>
-<h5 id="2-_Copy_to_a_directory_and_extract-">2. Copy to a directory and extract.</h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cp linux-<span class="number">3</span>.X.X.tar.xz /usr/src</div><div class="line"><span class="built_in">cd</span> /usr/src</div><div class="line">xz <span class="operator">-d</span> linux-<span class="number">3</span>.X.X.tar.xz</div><div class="line">tar -xf linux-<span class="number">3</span>.X.X.tar</div><div class="line"><span class="built_in">cd</span> linux-<span class="number">3</span>.X.X</div></pre></td></tr></table></figure>
-
-<h5 id="3-_If_not_the_first_time_to_compile">3. If not the first time to compile</h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">make clean</div><div class="line">make mrproper</div></pre></td></tr></table></figure>
-
-<h5 id="4-_Configuration">4. Configuration</h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make menuconfig</div></pre></td></tr></table></figure>
-
-<p>There might be a tiny prob here saying</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fatal error: curses.h: No such file or directory</div></pre></td></tr></table></figure>
-
-<p>Solution under Ubuntu:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sudo</span> apt-get install libncurses5-dev libncursesw5-dev</div></pre></td></tr></table></figure>
-
-<h5 id="5-_Compile">5. Compile</h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">make</div><div class="line">make modules_install</div><div class="line">make install</div></pre></td></tr></table></figure>
-
-<p>Suggestion here: enlarge the memory size of your virtual system, which may help reduce the compiling time dramatically.</p>
-<p>It takes hours to compile with 1 core and 1-GB memory with GUI turned on…</p>
-<h5 id="6-_Update_GRUB">6. Update GRUB</h5>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /boot</div><div class="line">mkinitramfs <span class="number">3.18</span>.<span class="number">8</span> -o initrd.img-<span class="number">3.18</span>.<span class="number">8</span></div><div class="line">cp /usr/src/linux-<span class="number">3.18</span>.<span class="number">8</span>/arch/x86_64/boot/bzImage /boot/vmlinuz-<span class="number">3.18</span>.<span class="number">8</span></div><div class="line">ln <span class="operator">-s</span> /boot/System.map-<span class="number">3.18</span>.<span class="number">8</span> /boot/System.map</div><div class="line"><span class="built_in">sudo</span> update-grub2</div></pre></td></tr></table></figure>
-
-<h5 id="7-_Reboot_and_Check!">7. Reboot and Check!</h5>
-
-        
-      </div>
-    
-
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/Linux-Kernel/">
-                #Linux Kernel
-              </a>
-            
+                <a href="/File-Transfer-Server-Client/">File Transfer Server & Client</a>
+              
+            </div>
           </div>
         
 
         
-
-        
         
       </div>
     
   </div>
 
 
+
+  
+    <div class="comments" id="comments">
+      
+        <div class="ds-thread" data-thread-key="Add-Schedule-Counter-in-Kernel/"
+             data-title="Add Schedule Counter in Kernel" data-url="http://freemanhsu.github.io/Add-Schedule-Counter-in-Kernel/">
+        </div>
+
+      
+    </div>
   
 
           </div>
@@ -428,7 +306,7 @@
         <div class="post-toc">
           
           
-            <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-_/include/linux/sched-h"><span class="nav-number">1.</span> <span class="nav-text">1. /include/linux/sched.h</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#line#1234"><span class="nav-number">1.1.</span> <span class="nav-text">line#1234</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-_/kernel/fork-c"><span class="nav-number">2.</span> <span class="nav-text">2. /kernel/fork.c</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#line#1622"><span class="nav-number">2.1.</span> <span class="nav-text">line#1622</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-_/kernel/sched/core-c"><span class="nav-number">3.</span> <span class="nav-text">3. /kernel/sched/core.c</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#line#2864"><span class="nav-number">3.1.</span> <span class="nav-text">line#2864</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-_/fs/proc/base-c"><span class="nav-number">4.</span> <span class="nav-text">4. /fs/proc/base.c</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#line_#319"><span class="nav-number">4.1.</span> <span class="nav-text">line #319</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#line_#2603"><span class="nav-number">4.2.</span> <span class="nav-text">line #2603</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#line_#2949"><span class="nav-number">4.3.</span> <span class="nav-text">line #2949</span></a></li></ol></li></ol></div>
           
         </div>
         <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -477,12 +355,6 @@
 
   
   
-  
-    <script type="text/javascript">
-      postMotionOptions = {stagger: 100, drag: true};
-    </script>
-  
-
 
   
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
@@ -652,6 +524,328 @@
 
 
   
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
 
   
 
