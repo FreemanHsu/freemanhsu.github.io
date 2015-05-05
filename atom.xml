@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://freemanhsu.github.io/"/>
-  <updated>2015-05-04T15:10:26.507Z</updated>
+  <updated>2015-05-05T04:56:37.376Z</updated>
   <id>http://freemanhsu.github.io/</id>
   
   <author>
@@ -19,8 +19,19 @@
     <link href="http://freemanhsu.github.io/Add-Schedule-Counter-in-Kernel/"/>
     <id>http://freemanhsu.github.io/Add-Schedule-Counter-in-Kernel/</id>
     <published>2015-05-04T15:03:31.000Z</published>
-    <updated>2015-05-04T15:09:33.000Z</updated>
-    <content type="html"><![CDATA[<p>(To be completed)</p>
+    <updated>2015-05-05T04:55:46.000Z</updated>
+    <content type="html"><![CDATA[<h4 id="Objective">Objective</h4>
+<p>Add a feature to the linux kernel, which records the total times a process is scheduled to be executed on CPU.</p>
+<a id="more"></a>
+<h4 id="Basic_Idea">Basic Idea</h4>
+<p>Add a counter varible to the struct <b>task_struct</b>, init the counter varible to 0 when a process is created/forked. Every time the process is scheduled to be executed, increase the counter and write the number to a proc file.</p>
+<h4 id="Details_of_how_to_modify_the_kernel">Details of how to modify the kernel</h4>
+<h5 id="0-_Environment">0. Environment</h5>
+<ul>
+<li>VMware Fusion 7</li>
+<li>Ubuntu 12.04.5</li>
+<li>Kernel Version 3.18.8</li>
+</ul>
 <h5 id="1-_/include/linux/sched-h">1. /include/linux/sched.h</h5>
 <h6 id="line#1234">line#1234</h6>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> task_struct{</div><div class="line">+	<span class="keyword">unsigned</span> <span class="keyword">long</span> ctx;</div><div class="line">	...</div><div class="line">}</div></pre></td></tr></table></figure>
@@ -47,12 +58,32 @@
 <h6 id="line_#2949">line #2949</h6>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+	ONE(<span class="string">"ctx"</span>,  S_IRUGO, proc_pid_ctx),</div></pre></td></tr></table></figure>
 
+<h5 id="5-_Compile">5. Compile</h5>
+<h4 id="Results">Results</h4>
+<h5 id="1-Test_Code">1.Test Code</h5>
+<figure class="highlight C"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// block.c</span></div><div class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;stdio.h&gt;</span></div><div class="line"><span class="keyword">int</span> main(){</div><div class="line">	<span class="keyword">while</span>(<span class="number">1</span>) getchar();</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">}</div></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">gcc block.c -o block</div><div class="line">./block</div></pre></td></tr></table></figure>
+
+<h5 id="2-Find_the_process_id">2.Find the process id</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps <span class="operator">-e</span> | grep block</div></pre></td></tr></table></figure>
+
+<h5 id="3-Observe_the_counter">3.Observe the counter</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /proc/[PID]</div><div class="line">cat ctx</div></pre></td></tr></table></figure>
+
+<h5 id="4-Increse_the_counter">4.Increse the counter</h5>
+<p>Type anything to the block process to make it scheduled to be executed and check the content of ctx file again.</p>
+<h5 id="5-End">5.End</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kill [PID]</div></pre></td></tr></table></figure>
+
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>(To be completed)</p>
-<h5 id="1-_/include/linux/sched-h">1. /include/linux/sched.h</h5>
-<h6 id="line#1234">line#1234</h6>
-<figure class="]]>
+    <![CDATA[<h4 id="Objective">Objective</h4>
+<p>Add a feature to the linux kernel, which records the total times a process is scheduled to be executed on CPU.</p>
+]]>
+    
     </summary>
     
       <category term="Linux Kernel" scheme="http://freemanhsu.github.io/tags/Linux-Kernel/"/>

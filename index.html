@@ -171,34 +171,14 @@
 
         
           
-            <p>(To be completed)</p>
-<h5 id="1-_/include/linux/sched-h">1. /include/linux/sched.h</h5>
-<h6 id="line#1234">line#1234</h6>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> task_struct{</div><div class="line">+	<span class="keyword">unsigned</span> <span class="keyword">long</span> ctx;</div><div class="line">	...</div><div class="line">}</div></pre></td></tr></table></figure>
+            <h4 id="Objective">Objective</h4>
+<p>Add a feature to the linux kernel, which records the total times a process is scheduled to be executed on CPU.</p>
 
-<h5 id="2-_/kernel/fork-c">2. /kernel/fork.c</h5>
-<h6 id="line#1622">line#1622</h6>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">long</span> do_fork(<span class="keyword">unsigned</span> <span class="keyword">long</span> clone_flags,</div><div class="line">      <span class="keyword">unsigned</span> <span class="keyword">long</span> stack_start,</div><div class="line">      <span class="keyword">unsigned</span> <span class="keyword">long</span> stack_size,</div><div class="line">      <span class="keyword">int</span> __user *parent_tidptr,</div><div class="line">      <span class="keyword">int</span> __user *child_tidptr){</div><div class="line">	  </div><div class="line">	  	...</div><div class="line">	  </div><div class="line">	  	p = copy_process(clone_flags, stack_start, stack_size,</div><div class="line">		 child_tidptr, NULL, trace);</div><div class="line"></div><div class="line">	+	p-&gt;ctx = <span class="number">0</span>;</div><div class="line">	</div><div class="line">	  	...</div><div class="line">	  </div><div class="line">	  }</div></pre></td></tr></table></figure>
-
-
-<h5 id="3-_/kernel/sched/core-c">3. /kernel/sched/core.c</h5>
-<h6 id="line#2864">line#2864</h6>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">asmlinkage __visible <span class="keyword">void</span> __sched schedule(<span class="keyword">void</span>)</div><div class="line">{</div><div class="line">	<span class="keyword">struct</span> task_struct *tsk = current;</div><div class="line"></div><div class="line">+	tsk-&gt;ctx = tsk-&gt;ctx + <span class="number">1</span>;</div><div class="line"></div><div class="line">	sched_submit_work(tsk);</div><div class="line">	__schedule();</div><div class="line">}</div></pre></td></tr></table></figure>
-
-
-<h5 id="4-_/fs/proc/base-c">4. /fs/proc/base.c</h5>
-<h6 id="line_#319">line #319</h6>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">+	<span class="comment">/*</span></div><div class="line">+	 * Provides /proc/PID/ctx</div><div class="line">+	 */</div><div class="line">+	<span class="keyword">static</span> <span class="keyword">int</span> proc_pid_ctx(<span class="keyword">struct</span> seq_file *m, <span class="keyword">struct</span> pid_namespace *ns,</div><div class="line">+				      <span class="keyword">struct</span> pid *pid, <span class="keyword">struct</span> task_struct *task)</div><div class="line">+	{</div><div class="line">+		<span class="keyword">return</span> seq_printf(m, <span class="string">"%llu\n"</span>, (<span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span>)task-&gt;ctx);</div><div class="line">+	}</div></pre></td></tr></table></figure>
-
-
-<h6 id="line_#2603">line #2603</h6>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+	ONE(<span class="string">"ctx"</span>,  S_IRUGO, proc_pid_ctx),</div></pre></td></tr></table></figure>
-
-
-<h6 id="line_#2949">line #2949</h6>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+	ONE(<span class="string">"ctx"</span>,  S_IRUGO, proc_pid_ctx),</div></pre></td></tr></table></figure>
-
-
+            <div class="post-more-link text-center">
+              <a class="btn" href="/Add-Schedule-Counter-in-Kernel/#more">
+                Read more &raquo;
+              </a>
+            </div>
           
         
       </div>
