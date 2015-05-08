@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://freemanhsu.github.io/"/>
-  <updated>2015-05-05T04:56:37.376Z</updated>
+  <updated>2015-05-08T03:59:59.156Z</updated>
   <id>http://freemanhsu.github.io/</id>
   
   <author>
@@ -13,6 +13,46 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Test Scripts for LeetCode JS]]></title>
+    <link href="http://freemanhsu.github.io/Test-Scripts-for-LeetCode-JS/"/>
+    <id>http://freemanhsu.github.io/Test-Scripts-for-LeetCode-JS/</id>
+    <published>2015-05-08T03:53:40.000Z</published>
+    <updated>2015-05-08T03:59:45.000Z</updated>
+    <content type="html"><![CDATA[<p>LeetCode in Javascript. <a href="https://github.com/FreemanHsu/LeetCodeJS" target="_blank" rel="external">Repo here</a></p>
+<p>Tool scripts for testing are added.</p>
+<a id="more"></a>
+<p>The reason for doing this is that I am poor at thinking of valuable test cases, thus I always relied on leetcode judging system to remind me of boundary conditions, which is not decent at all.</p>
+<p>Besides, it is not so interesting to write test scripts but I think the ability of automatic testing is of importance for front-end developers.</p>
+<h3 id="Let’s_Leet">Let’s Leet</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">npm</span> run leet</div></pre></td></tr></table></figure>
+
+<p>Automatically setup a new leetcode according to current progress, including:</p>
+<ul>
+<li>A directory named like 001-Two-Sum</li>
+<li>index.js</li>
+<li>test.js</li>
+<li>input</li>
+<li>output</li>
+</ul>
+<h3 id="Test">Test</h3>
+<p>Complete the test.js and test cases (input and output files) and</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">test</span></div></pre></td></tr></table></figure>
+
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>LeetCode in Javascript. <a href="https://github.com/FreemanHsu/LeetCodeJS" target="_blank" rel="external">Repo here</a></p>
+<p>Tool scripts for testing are added.</p>
+]]>
+    
+    </summary>
+    
+      <category term="Javascript" scheme="http://freemanhsu.github.io/tags/Javascript/"/>
+    
+      <category term="LeetCode" scheme="http://freemanhsu.github.io/categories/LeetCode/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Add Schedule Counter in Kernel]]></title>

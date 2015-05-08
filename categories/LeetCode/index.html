@@ -28,7 +28,7 @@
 
 
 
-  <title> Tag: socket // AndyHsu's Blog </title>
+  <title> Category: LeetCode // AndyHsu's Blog </title>
 </head>
 
 <body>
@@ -106,10 +106,11 @@
 
           <div id="posts" class="posts-expand">
             
+
   <div class="collection-title">
     <h2 >
-      socket
-      <small>Tag</small>
+      LeetCode
+      <small>Category</small>
     </h2>
   </div>
 
@@ -125,7 +126,7 @@
           
           
             
-              File Transfer Server & Client
+              Test Scripts for LeetCode JS
             
           
         </h1>
@@ -134,7 +135,7 @@
       <div class="post-meta">
         <span class="post-time">
           
-            Posted on 2015-04-20
+            Posted on 2015-05-08
           
         </span>
 
@@ -143,7 +144,7 @@
             <span class="post-category">
               &nbsp; | &nbsp; In
               
-                <a href="/categories/networking/">networking</a>
+                <a href="/categories/LeetCode/">LeetCode</a>
 
                 
                 
@@ -157,8 +158,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/File-Transfer-Server-Client/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="File-Transfer-Server-Client/"></span>
+            <a href="/Test-Scripts-for-LeetCode-JS/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="Test-Scripts-for-LeetCode-JS/"></span>
             </a>
           </span>
           
@@ -173,42 +174,26 @@
         
 
         
-          <h3 id="Socket_Programming_Practice">Socket Programming Practice</h3>
-<ul>
-<li>File Transfer Server &amp; Client </li>
-<li>Ftp Client</li>
-</ul>
-<h3 id="File_Transfer_Server_&amp;_Client">File Transfer Server &amp; Client</h3>
-<p><a href="https://github.com/FreemanHsu/socketFTP" target="_blank" rel="external">repo here</a></p>
+          <p>LeetCode in Javascript. <a href="https://github.com/FreemanHsu/LeetCodeJS" target="_blank" rel="external">Repo here</a></p>
+<p>Tool scripts for testing are added.</p>
 <a id="more"></a>
-<p>In this part, I implemented a pair of file transfer server and client without reading the ftp protocol, which turned out to be naive compared to the ftp. Still I learned much from this experience, about socket programming and pit falls.</p>
-<p>Here is a brief introduction of my implementation.</p>
-<h4 id="Screenshot">Screenshot</h4>
-<p><img src="../images/screenshot.png" alt="screentshot"></p>
-<h4 id="Commands">Commands</h4>
+<p>The reason for doing this is that I am poor at thinking of valuable test cases, thus I always relied on leetcode judging system to remind me of boundary conditions, which is not decent at all.</p>
+<p>Besides, it is not so interesting to write test scripts but I think the ability of automatic testing is of importance for front-end developers.</p>
+<h3 id="Let’s_Leet">Let’s Leet</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">npm</span> run leet</div></pre></td></tr></table></figure>
+
+<p>Automatically setup a new leetcode according to current progress, including:</p>
 <ul>
-<li>help</li>
-<li>ls</li>
-<li>cd remote-dir</li>
-<li>append local-file [remote-file]</li>
-<li>get remote-file [local-file]</li>
-<li>delete remote-file</li>
-<li>pwd</li>
-<li>bye</li>
+<li>A directory named like 001-Two-Sum</li>
+<li>index.js</li>
+<li>test.js</li>
+<li>input</li>
+<li>output</li>
 </ul>
-<p>The server starts on a specified port, waiting for the clients to connect.<br>When clients successfully connect to the server, try the given commands to view, cd into or out of the server folders, to upload or download the files, to indicate the current working directory or delete files on the server, or just say goodbye to the server.</p>
-<h4 id="Here_are_some_features_supported:">Here are some features supported:</h4>
-<ul>
-<li>Varied length of message delivery by indication with a prefix.</li>
-<li>Multiple clients connection.</li>
-<li>If necessary, create the base directory for the file transfer server.</li>
-<li>Clients can never go out of the range of the base directory, spoiling the files on the server.</li>
-<li>Show process of uploading and downloading.</li>
-<li>Prompts for append/get commands.</li>
-</ul>
-<h3 id="Ftp_Client">Ftp Client</h3>
-<p>Currently a prototype, connecting to an existing ftp server.</p>
-<p>Todo: fully-fledged ftp client.</p>
+<h3 id="Test">Test</h3>
+<p>Complete the test.js and test cases (input and output files) and</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">test</span></div></pre></td></tr></table></figure>
+
 
         
       </div>
@@ -219,8 +204,8 @@
         
           <div class="post-tags">
             
-              <a href="/tags/socket/">
-                #socket
+              <a href="/tags/Javascript/">
+                #Javascript
               </a>
             
           </div>
@@ -236,6 +221,7 @@
 
 
   
+
 
           </div>
 
@@ -358,12 +344,6 @@
 
   
   
-  
-    <script type="text/javascript">
-      postMotionOptions = {stagger: 100, drag: true};
-    </script>
-  
-
 
   
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
