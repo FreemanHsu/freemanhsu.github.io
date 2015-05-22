@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://freemanhsu.github.io/"/>
-  <updated>2015-05-08T03:59:59.156Z</updated>
+  <updated>2015-05-22T13:13:45.653Z</updated>
   <id>http://freemanhsu.github.io/</id>
   
   <author>
@@ -13,6 +13,103 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Review of Database]]></title>
+    <link href="http://freemanhsu.github.io/Review-of-Database/"/>
+    <id>http://freemanhsu.github.io/Review-of-Database/</id>
+    <published>2015-05-22T11:13:49.000Z</published>
+    <updated>2015-05-22T13:11:43.000Z</updated>
+    <content type="html"><![CDATA[<p>Database Systems Course Review.</p>
+<h1 id="Introduction">Introduction</h1>
+<p>Aspects of studying (questions to answer):</p>
+<ul>
+<li>Modeling and design of databases.<br>(How is the information structured?)</li>
+<li>Programming: queries and DB operations like update.<br>(How does one express queries and other operations on the database?)</li>
+<li>DBMS implementation.<br>(How to build a DBMS?)</li>
+</ul>
+<a id="more"></a>
+<h1 id="Relational_Database_Modeling">Relational Database Modeling</h1>
+<h2 id="The_Relational_Model_of_Data">The Relational Model of Data</h2>
+<ul>
+<li>Data Model = Structure of the data + Operations on data + Constraints</li>
+<li>Schemas<br>  Relation schema = relation name + attribute list<br>  Database = collection of relations<br>  Database schema = set of all relation schemas in the database</li>
+<li>Relation instances<br>  is current set of rows for a relation schema</li>
+<li>Key of Relations</li>
+<li>Three kinds of table<ul>
+<li>Stored relations<br>  real, stored</li>
+<li>Views<br>  relations defined by a computation, virtual, not really exists</li>
+<li>Temporary tables<br>  constructed by SQL processor, thrown away, not stored</li>
+</ul>
+</li>
+<li>Table Declarations<ul>
+<li>Most common types<ul>
+<li>INT / INTEGER</li>
+<li>REAL / FLOAT</li>
+<li>CHAR(n)</li>
+<li>VARCHAR(n)</li>
+<li>BOOLEAN: true, false, unknown</li>
+<li>DATE</li>
+<li>TIME</li>
+</ul>
+</li>
+<li>NULL , NOT NULL , DEFAULT value</li>
+<li>PRIMARY KEY , UNIQUE<br>  There can be only one PRIMARY KEY for a relation, but several UNIQUE attributes.<br>  No attribute of a PRIMARY KEY can ever be NULL in any tuple. But attributes declared UNIQUE may have NULL’s and there may be several tuples with NULL.</li>
+</ul>
+</li>
+<li>Core Relational Algebra:<ul>
+<li>Union, intersection, difference<br>  Usual set operations, but both operands must have the same relation schema.</li>
+<li>Selection<br>  Picking certain rows</li>
+<li>Projection<br>  Picking certain columns</li>
+<li>Products and joins<br>  Compositions of relations<ul>
+<li>Theta Join</li>
+<li>Natural Join</li>
+</ul>
+</li>
+<li>Renaming<br>  of relations and attributes</li>
+</ul>
+</li>
+<li>Relational Algebra on Bags<br>  A bag (or multiset) is like a set, but an element may appear more than once.<ul>
+<li>Operations on Bags</li>
+</ul>
+</li>
+<li>Constraints on Relations<ul>
+<li>The ability to restrict the data that may be stored in a database.</li>
+<li>Relational algebra: used as a constraint language abstractly.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Design_Theory_for_Relational_Databases">Design Theory for Relational Databases</h2>
+<h2 id="High-Level_Database_Models">High-Level Database Models</h2>
+<h1 id="Relational_Database_Programming">Relational Database Programming</h1>
+<h2 id="Algebraic_and_Logical_Query_Languages">Algebraic and Logical Query Languages</h2>
+<h2 id="The_Database_Language_SQL">The Database Language SQL</h2>
+<h2 id="Constraints_and_Triggers">Constraints and Triggers</h2>
+<h2 id="Views_and_Indexes">Views and Indexes</h2>
+<h2 id="SQL_in_a_Server_Environment">SQL in a Server Environment</h2>
+<h2 id="Advanced_Topics_in_Relational_Databases">Advanced Topics in Relational Databases</h2>
+<h1 id="Modeling_and_Programming_for_Semistructured_Data">Modeling and Programming for Semistructured Data</h1>
+<h2 id="The_Semistructured-Data_Model">The Semistructured-Data Model</h2>
+<h2 id="Programming_Languages_for_XML">Programming Languages for XML</h2>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Database Systems Course Review.</p>
+<h1 id="Introduction">Introduction</h1>
+<p>Aspects of studying (questions to answer):</p>
+<ul>
+<li>Modeling and design of databases.<br>(How is the information structured?)</li>
+<li>Programming: queries and DB operations like update.<br>(How does one express queries and other operations on the database?)</li>
+<li>DBMS implementation.<br>(How to build a DBMS?)</li>
+</ul>
+]]>
+    
+    </summary>
+    
+      <category term="Database" scheme="http://freemanhsu.github.io/tags/Database/"/>
+    
+      <category term="Course Review" scheme="http://freemanhsu.github.io/categories/Course-Review/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Test Scripts for LeetCode JS]]></title>

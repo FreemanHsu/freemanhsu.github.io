@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://freemanhsu.github.io/Review-of-Database/</loc>
+    <lastmod>2015-05-22T13:11:43.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://freemanhsu.github.io/Test-Scripts-for-LeetCode-JS/</loc>
     <lastmod>2015-05-08T03:59:45.000Z</lastmod>
   </url>

@@ -18,17 +18,9 @@
 
 
 
+	<meta name="keywords" content="Database," />
 
-
-
-
-
-    <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.0" />
-
-
-
-
-  <title> Hello Hexo // AndyHsu's Blog </title>
+  <title> Review of Database // AndyHsu's Blog </title>
 </head>
 
 <body>
@@ -117,7 +109,7 @@
           
           
             
-              Hello Hexo
+              Review of Database
             
           
         </h1>
@@ -126,11 +118,22 @@
       <div class="post-meta">
         <span class="post-time">
           
-            Posted on 2015-02-04
+            Posted on 2015-05-22
           
         </span>
 
         
+          
+            <span class="post-category">
+              &nbsp; | &nbsp; In
+              
+                <a href="/categories/Course-Review/">Course Review</a>
+
+                
+                
+
+              
+            </span>
           
         
 
@@ -138,8 +141,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/Hello-Hexo/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="Hello-Hexo/"></span>
+            <a href="/Review-of-Database/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="Review-of-Database/"></span>
             </a>
           </span>
           
@@ -154,11 +157,77 @@
         
 
         
-          <p>After going through blog systems as wordpress, jekyll, farbox, etc. Downloading, configuring, deploying, writing one episode or two and turn to another one…</p>
+          <p>Database Systems Course Review.</p>
+<h1 id="Introduction">Introduction</h1>
+<p>Aspects of studying (questions to answer):</p>
+<ul>
+<li>Modeling and design of databases.<br>(How is the information structured?)</li>
+<li>Programming: queries and DB operations like update.<br>(How does one express queries and other operations on the database?)</li>
+<li>DBMS implementation.<br>(How to build a DBMS?)</li>
+</ul>
 <a id="more"></a>
-<p>Okay, here I am, with Hexo! Why Hexo? I finally realized that what’s important is keep blogging when I happened to try Hexo… </p>
-<h3 id="LOL">LOL</h3>
-<h3 id="Keep_Blogging-">Keep Blogging.</h3>
+<h1 id="Relational_Database_Modeling">Relational Database Modeling</h1>
+<h2 id="The_Relational_Model_of_Data">The Relational Model of Data</h2>
+<ul>
+<li>Data Model = Structure of the data + Operations on data + Constraints</li>
+<li>Schemas<br>  Relation schema = relation name + attribute list<br>  Database = collection of relations<br>  Database schema = set of all relation schemas in the database</li>
+<li>Relation instances<br>  is current set of rows for a relation schema</li>
+<li>Key of Relations</li>
+<li>Three kinds of table<ul>
+<li>Stored relations<br>  real, stored</li>
+<li>Views<br>  relations defined by a computation, virtual, not really exists</li>
+<li>Temporary tables<br>  constructed by SQL processor, thrown away, not stored</li>
+</ul>
+</li>
+<li>Table Declarations<ul>
+<li>Most common types<ul>
+<li>INT / INTEGER</li>
+<li>REAL / FLOAT</li>
+<li>CHAR(n)</li>
+<li>VARCHAR(n)</li>
+<li>BOOLEAN: true, false, unknown</li>
+<li>DATE</li>
+<li>TIME</li>
+</ul>
+</li>
+<li>NULL , NOT NULL , DEFAULT value</li>
+<li>PRIMARY KEY , UNIQUE<br>  There can be only one PRIMARY KEY for a relation, but several UNIQUE attributes.<br>  No attribute of a PRIMARY KEY can ever be NULL in any tuple. But attributes declared UNIQUE may have NULL’s and there may be several tuples with NULL.</li>
+</ul>
+</li>
+<li>Core Relational Algebra:<ul>
+<li>Union, intersection, difference<br>  Usual set operations, but both operands must have the same relation schema.</li>
+<li>Selection<br>  Picking certain rows</li>
+<li>Projection<br>  Picking certain columns</li>
+<li>Products and joins<br>  Compositions of relations<ul>
+<li>Theta Join</li>
+<li>Natural Join</li>
+</ul>
+</li>
+<li>Renaming<br>  of relations and attributes</li>
+</ul>
+</li>
+<li>Relational Algebra on Bags<br>  A bag (or multiset) is like a set, but an element may appear more than once.<ul>
+<li>Operations on Bags</li>
+</ul>
+</li>
+<li>Constraints on Relations<ul>
+<li>The ability to restrict the data that may be stored in a database.</li>
+<li>Relational algebra: used as a constraint language abstractly.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Design_Theory_for_Relational_Databases">Design Theory for Relational Databases</h2>
+<h2 id="High-Level_Database_Models">High-Level Database Models</h2>
+<h1 id="Relational_Database_Programming">Relational Database Programming</h1>
+<h2 id="Algebraic_and_Logical_Query_Languages">Algebraic and Logical Query Languages</h2>
+<h2 id="The_Database_Language_SQL">The Database Language SQL</h2>
+<h2 id="Constraints_and_Triggers">Constraints and Triggers</h2>
+<h2 id="Views_and_Indexes">Views and Indexes</h2>
+<h2 id="SQL_in_a_Server_Environment">SQL in a Server Environment</h2>
+<h2 id="Advanced_Topics_in_Relational_Databases">Advanced Topics in Relational Databases</h2>
+<h1 id="Modeling_and_Programming_for_Semistructured_Data">Modeling and Programming for Semistructured Data</h1>
+<h2 id="The_Semistructured-Data_Model">The Semistructured-Data Model</h2>
+<h2 id="Programming_Languages_for_XML">Programming Languages for XML</h2>
 
         
       </div>
@@ -167,16 +236,24 @@
     
       <div class="post-footer">
         
+          <div class="post-tags">
+            
+              <a href="/tags/Database/">
+                #Database
+              </a>
+            
+          </div>
+        
 
         
           <div class="post-nav">
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/Start-a-Rails-Project/">Start a Rails Project</a>
-              
             </div>
 
             <div class="post-nav-next post-nav-item">
+              
+                <a href="/Test-Scripts-for-LeetCode-JS/">Test Scripts for LeetCode JS</a>
               
             </div>
           </div>
@@ -193,8 +270,8 @@
   
     <div class="comments" id="comments">
       
-        <div class="ds-thread" data-thread-key="Hello-Hexo/"
-             data-title="Hello Hexo" data-url="http://freemanhsu.github.io/Hello-Hexo/">
+        <div class="ds-thread" data-thread-key="Review-of-Database/"
+             data-title="Review of Database" data-url="http://freemanhsu.github.io/Review-of-Database/">
         </div>
 
       
@@ -273,7 +350,7 @@
         <div class="post-toc">
           
           
-            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#LOL"><span class="nav-number">1.</span> <span class="nav-text">LOL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Keep_Blogging-"><span class="nav-number">2.</span> <span class="nav-text">Keep Blogging.</span></a></li></ol></div>
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Relational_Database_Modeling"><span class="nav-number">2.</span> <span class="nav-text">Relational Database Modeling</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#The_Relational_Model_of_Data"><span class="nav-number">2.1.</span> <span class="nav-text">The Relational Model of Data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Design_Theory_for_Relational_Databases"><span class="nav-number">2.2.</span> <span class="nav-text">Design Theory for Relational Databases</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#High-Level_Database_Models"><span class="nav-number">2.3.</span> <span class="nav-text">High-Level Database Models</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Relational_Database_Programming"><span class="nav-number">3.</span> <span class="nav-text">Relational Database Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Algebraic_and_Logical_Query_Languages"><span class="nav-number">3.1.</span> <span class="nav-text">Algebraic and Logical Query Languages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The_Database_Language_SQL"><span class="nav-number">3.2.</span> <span class="nav-text">The Database Language SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Constraints_and_Triggers"><span class="nav-number">3.3.</span> <span class="nav-text">Constraints and Triggers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Views_and_Indexes"><span class="nav-number">3.4.</span> <span class="nav-text">Views and Indexes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL_in_a_Server_Environment"><span class="nav-number">3.5.</span> <span class="nav-text">SQL in a Server Environment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Advanced_Topics_in_Relational_Databases"><span class="nav-number">3.6.</span> <span class="nav-text">Advanced Topics in Relational Databases</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Modeling_and_Programming_for_Semistructured_Data"><span class="nav-number">4.</span> <span class="nav-text">Modeling and Programming for Semistructured Data</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#The_Semistructured-Data_Model"><span class="nav-number">4.1.</span> <span class="nav-text">The Semistructured-Data Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Programming_Languages_for_XML"><span class="nav-number">4.2.</span> <span class="nav-text">Programming Languages for XML</span></a></li></ol></li></ol></div>
           
         </div>
         <div class="post-toc-indicator-bottom post-toc-indicator"></div>

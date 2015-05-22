@@ -28,7 +28,7 @@
 
 
 
-  <title> Category: Ruby on Rails // AndyHsu's Blog </title>
+  <title> Tag: Database // AndyHsu's Blog </title>
 </head>
 
 <body>
@@ -106,11 +106,10 @@
 
           <div id="posts" class="posts-expand">
             
-
   <div class="collection-title">
     <h2 >
-      Ruby on Rails
-      <small>Category</small>
+      Database
+      <small>Tag</small>
     </h2>
   </div>
 
@@ -126,7 +125,7 @@
           
           
             
-              Failing to Connect to Rails Server on VM
+              Review of Database
             
           
         </h1>
@@ -135,7 +134,7 @@
       <div class="post-meta">
         <span class="post-time">
           
-            Posted on 2015-04-07
+            Posted on 2015-05-22
           
         </span>
 
@@ -144,7 +143,7 @@
             <span class="post-category">
               &nbsp; | &nbsp; In
               
-                <a href="/categories/Ruby-on-Rails/">Ruby on Rails</a>
+                <a href="/categories/Course-Review/">Course Review</a>
 
                 
                 
@@ -158,8 +157,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/Failing-to-Connect-to-Rails-Server-on-VM/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="Failing-to-Connect-to-Rails-Server-on-VM/"></span>
+            <a href="/Review-of-Database/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="Review-of-Database/"></span>
             </a>
           </span>
           
@@ -174,21 +173,77 @@
         
 
         
-          <p>I’ve been using vagrant to set up ruby on rails project environment, which is best practice in my opinion. One can perfectly and easily have a clean envrionment, in my case, ubuntu64 to put the whole rails server in while coding in familiar platform using favourite editor.</p>
-<p>Usually, I would type in shell the following commands</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vagrant up</div><div class="line">vagrant ssh</div><div class="line"><span class="built_in">cd</span> &lt;project folder&gt;</div><div class="line">rails s</div></pre></td></tr></table></figure>
-
+          <p>Database Systems Course Review.</p>
+<h1 id="Introduction">Introduction</h1>
+<p>Aspects of studying (questions to answer):</p>
+<ul>
+<li>Modeling and design of databases.<br>(How is the information structured?)</li>
+<li>Programming: queries and DB operations like update.<br>(How does one express queries and other operations on the database?)</li>
+<li>DBMS implementation.<br>(How to build a DBMS?)</li>
+</ul>
 <a id="more"></a>
-<p>the server is up and I can open Chrome on MacOS and type in <a href="#">[project-name].dev:3000</a> to have a look at the website under development. <a href="#">[project-name].dev</a> is an alias to the IP address of the virtual machine. It’s all beautiful.</p>
-<p>However, when I set up a new project today as usual and open up a browser, the server did not respond.</p>
-<p>At first I thought it was the rails’s problem. So I tried to connect to the server locally with telnet.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">telnet localhost <span class="number">3000</span></div><div class="line">GET / HTTP/<span class="number">1.0</span></div><div class="line">Content-Type:text/html; charset=UTF-<span class="number">8</span></div></pre></td></tr></table></figure>
-
-<p>which performed perfectly.</p>
-<p>It turns out that when I http request <a href="#">[project-name].dev:3000</a>, the server received nothing at all. Though I still don’t get what’s different from the previous ones, I forced the server listen to the ip address on start up and the problem is solved.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rails s -b <span class="number">192.168</span>.<span class="number">34.34</span></div></pre></td></tr></table></figure>
-
-<p>The server listens to <a href="#">http://localhost:3000</a> by default, then the problem is how the previous ones worked… LOL</p>
+<h1 id="Relational_Database_Modeling">Relational Database Modeling</h1>
+<h2 id="The_Relational_Model_of_Data">The Relational Model of Data</h2>
+<ul>
+<li>Data Model = Structure of the data + Operations on data + Constraints</li>
+<li>Schemas<br>  Relation schema = relation name + attribute list<br>  Database = collection of relations<br>  Database schema = set of all relation schemas in the database</li>
+<li>Relation instances<br>  is current set of rows for a relation schema</li>
+<li>Key of Relations</li>
+<li>Three kinds of table<ul>
+<li>Stored relations<br>  real, stored</li>
+<li>Views<br>  relations defined by a computation, virtual, not really exists</li>
+<li>Temporary tables<br>  constructed by SQL processor, thrown away, not stored</li>
+</ul>
+</li>
+<li>Table Declarations<ul>
+<li>Most common types<ul>
+<li>INT / INTEGER</li>
+<li>REAL / FLOAT</li>
+<li>CHAR(n)</li>
+<li>VARCHAR(n)</li>
+<li>BOOLEAN: true, false, unknown</li>
+<li>DATE</li>
+<li>TIME</li>
+</ul>
+</li>
+<li>NULL , NOT NULL , DEFAULT value</li>
+<li>PRIMARY KEY , UNIQUE<br>  There can be only one PRIMARY KEY for a relation, but several UNIQUE attributes.<br>  No attribute of a PRIMARY KEY can ever be NULL in any tuple. But attributes declared UNIQUE may have NULL’s and there may be several tuples with NULL.</li>
+</ul>
+</li>
+<li>Core Relational Algebra:<ul>
+<li>Union, intersection, difference<br>  Usual set operations, but both operands must have the same relation schema.</li>
+<li>Selection<br>  Picking certain rows</li>
+<li>Projection<br>  Picking certain columns</li>
+<li>Products and joins<br>  Compositions of relations<ul>
+<li>Theta Join</li>
+<li>Natural Join</li>
+</ul>
+</li>
+<li>Renaming<br>  of relations and attributes</li>
+</ul>
+</li>
+<li>Relational Algebra on Bags<br>  A bag (or multiset) is like a set, but an element may appear more than once.<ul>
+<li>Operations on Bags</li>
+</ul>
+</li>
+<li>Constraints on Relations<ul>
+<li>The ability to restrict the data that may be stored in a database.</li>
+<li>Relational algebra: used as a constraint language abstractly.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Design_Theory_for_Relational_Databases">Design Theory for Relational Databases</h2>
+<h2 id="High-Level_Database_Models">High-Level Database Models</h2>
+<h1 id="Relational_Database_Programming">Relational Database Programming</h1>
+<h2 id="Algebraic_and_Logical_Query_Languages">Algebraic and Logical Query Languages</h2>
+<h2 id="The_Database_Language_SQL">The Database Language SQL</h2>
+<h2 id="Constraints_and_Triggers">Constraints and Triggers</h2>
+<h2 id="Views_and_Indexes">Views and Indexes</h2>
+<h2 id="SQL_in_a_Server_Environment">SQL in a Server Environment</h2>
+<h2 id="Advanced_Topics_in_Relational_Databases">Advanced Topics in Relational Databases</h2>
+<h1 id="Modeling_and_Programming_for_Semistructured_Data">Modeling and Programming for Semistructured Data</h1>
+<h2 id="The_Semistructured-Data_Model">The Semistructured-Data Model</h2>
+<h2 id="Programming_Languages_for_XML">Programming Languages for XML</h2>
 
         
       </div>
@@ -199,8 +254,8 @@
         
           <div class="post-tags">
             
-              <a href="/tags/Ruby-on-Rails/">
-                #Ruby on Rails
+              <a href="/tags/Database/">
+                #Database
               </a>
             
           </div>
@@ -216,135 +271,6 @@
 
 
   
-    
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              Start a Rails Project
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          
-            Posted on 2015-02-19
-          
-        </span>
-
-        
-          
-            <span class="post-category">
-              &nbsp; | &nbsp; In
-              
-                <a href="/categories/Ruby-on-Rails/">Ruby on Rails</a>
-
-                
-                
-
-              
-            </span>
-          
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/Start-a-Rails-Project/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="Start-a-Rails-Project/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    
-      <div class="post-body">
-
-        
-        
-
-        
-          <h2 id="Step_by_Step">Step by Step</h2>
-<h3 id="Step_1">Step 1</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir &lt;project name&gt;   </div><div class="line"><span class="built_in">cd</span> &lt;project name&gt;</div><div class="line">vagrant init ubuntu/trusty64</div><div class="line">vagrant up</div></pre></td></tr></table></figure>
-
-<a id="more"></a>
-<h3 id="Step_2">Step 2</h3>
-<p>Change the memory size, which is necessary for developing.<br>We also give the virtual machine a fixed IP address for convenience.<br>Modify Vagrantfile with your favourite editor, adding the following lines.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">config.vm.provider <span class="string">"virtualbox"</span> <span class="keyword">do</span> |v|</div><div class="line">  v.memory = <span class="number">2048</span></div><div class="line">end</div><div class="line">config.vm.network :private_network, ip: <span class="string">"192.168.33.33"</span></div></pre></td></tr></table></figure>
-
-<p>and then  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vagrant reload</div></pre></td></tr></table></figure>
-
-<p>More for IP address,</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sudo</span> vim /etc/hosts</div></pre></td></tr></table></figure>
-
-<p>and add</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">192.168</span>.<span class="number">33.33</span> &lt;project name&gt;.dev</div></pre></td></tr></table></figure>
-
-<h3 id="Step_3">Step 3</h3>
-<p>Time for installing rails.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vagrant ssh</div></pre></td></tr></table></figure>
-
-<p>and type in following lines one by one</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sudo</span> apt-get update</div><div class="line"><span class="built_in">sudo</span> apt-get install -y git-core curl zlib1g-dev build-essential \</div><div class="line">                     libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 \</div><div class="line">                     libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common</div></pre></td></tr></table></figure>
-
-<p>Install rbenv, which is a tool for installing ruby and version control of ruby.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> </div><div class="line">git clone git://github.com/sstephenson/rbenv.git .rbenv</div><div class="line"><span class="built_in">echo</span> <span class="string">'export PATH="$HOME/.rbenv/bin:$PATH"'</span> &gt;&gt; ~/.bashrc</div><div class="line"><span class="built_in">echo</span> <span class="string">'eval "$(rbenv init -)"'</span> &gt;&gt; ~/.bashrc</div><div class="line">git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build</div><div class="line"><span class="built_in">echo</span> <span class="string">'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"'</span> &gt;&gt; ~/.bashrc</div><div class="line"><span class="keyword">exec</span> <span class="variable">$SHELL</span></div></pre></td></tr></table></figure>
-
-<p>Now is ruby</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rbenv install <span class="number">2.1</span>.<span class="number">2</span></div><div class="line">rbenv global <span class="number">2.1</span>.<span class="number">2</span></div></pre></td></tr></table></figure>
-
-<p>Next is rails</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"gem: --no-ri --no-rdoc"</span> &gt; ~/.gemrc</div></pre></td></tr></table></figure>
-
-<p>This is for simplicity.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">gem install rails -v <span class="number">4.1</span>.<span class="number">2</span></div><div class="line">rbenv rehash</div></pre></td></tr></table></figure>
-
-<p>Now database.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sudo</span> apt-get install mysql-server  mysql-client  libmysqlclient-dev</div></pre></td></tr></table></figure>
-
-<p>Environment ready!</p>
-<p><a href="http://happypeter.github.io/rails10/" target="_blank" rel="external">Reference</a></p>
-
-        
-      </div>
-    
-
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/Ruby-on-Rails/">
-                #Ruby on Rails
-              </a>
-            
-          </div>
-        
-
-        
-
-        
-        
-      </div>
-    
-  </div>
-
-
-  
-
 
           </div>
 
@@ -467,6 +393,12 @@
 
   
   
+  
+    <script type="text/javascript">
+      postMotionOptions = {stagger: 100, drag: true};
+    </script>
+  
+
 
   
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
